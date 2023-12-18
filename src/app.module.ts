@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersEntity } from './users/entities/users.entity';
-import { UsersModule } from './users/users.module';
+import { User } from './modules/user/user.entity';
+import { UserModule } from './modules/user/user.module';
 
 @Module({
   imports: [
@@ -14,10 +14,10 @@ import { UsersModule } from './users/users.module';
       username: 'root',
       password: 'root',
       database: 'nodedb',
-      entities: [UsersEntity],
+      entities: [User],
       synchronize: true, // set to false in production
     }),
-    UsersModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
